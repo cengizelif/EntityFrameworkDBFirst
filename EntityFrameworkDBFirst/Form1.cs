@@ -40,7 +40,7 @@ namespace EntityFrameworkDBFirst
 
             var sonuc2 = db.Urunler.Join(db.Tedarikciler, u => u.TedarikciID, t => t.TedarikciID, (urn, ted)=>new {urn.UrunID,urn.UrunAdi,urn.BirimFiyati,urn.HedefStokDuzeyi,ted.TedarikciID,ted.SirketAdi});
             
-            var sonuc3 = db.Urunler.Join(db.Kategoriler, u => u.KategoriID, k => k.KategoriID, (urn, kat) => new { urn,kat.KategoriAdi }).Join(db.Tedarikciler,prd=>prd.urn.TedarikciID,t=>t.TedarikciID,(urun,ted)=> new {urun.urn.UrunID,urun.urn.UrunAdi, urun.urn.BirimFiyati,urun.urn.HedefStokDuzeyi, urun.urn.TedarikciID, urun.urn.KategoriID,urun.KategoriAdi,ted.SirketAdi  } );
+            var sonuc3 = db.Urunler.Join (db.Kategoriler, u => u.KategoriID, k => k.KategoriID, (urn, kat) => new { urn,kat.KategoriAdi }).Join(db.Tedarikciler,prd=>prd.urn.TedarikciID,t=>t.TedarikciID,(urun,ted)=> new {urun.urn.UrunID,urun.urn.UrunAdi, urun.urn.BirimFiyati,urun.urn.HedefStokDuzeyi, urun.urn.TedarikciID, urun.urn.KategoriID,urun.KategoriAdi,ted.SirketAdi  } );
 
             dgv_urunler.DataSource = sonuc3.ToList();
         }
